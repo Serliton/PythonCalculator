@@ -31,13 +31,15 @@ try:
 except:
     raise Exception("Формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)")
 
-
-match operator:
-    case "+":
-        print(firstOperand + secondOperand)
-    case "-":
-        print(firstOperand - secondOperand)
-    case "*":
-        print(firstOperand * secondOperand)
-    case "/":
-        print(firstOperand // secondOperand)
+if 1 <= firstOperand <= 10 and 1 <= secondOperand <= 10:
+    match operator:
+        case "+":
+            print(firstOperand + secondOperand)
+        case "-":
+            print(firstOperand - secondOperand)
+        case "*":
+            print(firstOperand * secondOperand)
+        case "/":
+            print(firstOperand // secondOperand)
+else:
+    raise Exception("Операнды должны находиться в диапазоне от 1 до 10")

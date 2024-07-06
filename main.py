@@ -1,45 +1,47 @@
-userInput = input("Введите арифметическое выражение с двумя операндами.\nИспользуйте натуральные числа от 1 до 10:\n")
+def main(user_input: str):
+    operatorIndx = None
+    operator = None
 
-operatorIndx = None
-operator = None
-firstOperand = None
-secondOperand = None
-
-
-for indx,s in enumerate(userInput):
-    match s:
-        case "+":
-            operatorIndx = indx
-            operator = s
-        case "-":
-            operatorIndx = indx
-            operator = s
-        case "*":
-            operatorIndx = indx
-            operator = s
-        case "/":
-            operatorIndx = indx
-            operator = s
+    for indx,s in enumerate(user_input):
+        match s:
+            case "+":
+                operatorIndx = indx
+                operator = s
+            case "-":
+                operatorIndx = indx
+                operator = s
+            case "*":
+                operatorIndx = indx
+                operator = s
+            case "/":
+                operatorIndx = indx
+                operator = s
 
 
-if operatorIndx == None:
-    raise Exception("Cтрока не является математической операцией")
+    if operatorIndx == None:
+        raise Exception("Cтрока не является математической операцией")
 
-try:
-    firstOperand = int(userInput[0:operatorIndx])
-    secondOperand = int(userInput[operatorIndx + 1:])
-except:
-    raise Exception("Формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)")
+    try:
+        firstOperand = int(user_input[:operatorIndx])
+        secondOperand = int(user_input[operatorIndx + 1:])
+    except:
+        raise Exception("Формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)")
 
-if (1 <= firstOperand <= 10) and (1 <= secondOperand <= 10):
-    match operator:
-        case "+":
-            print(firstOperand + secondOperand)
-        case "-":
-            print(firstOperand - secondOperand)
-        case "*":
-            print(firstOperand * secondOperand)
-        case "/":
-            print(firstOperand // secondOperand)
-else:
-    raise Exception("Операнды должны находиться в диапазоне от 1 до 10")
+    if (1 <= firstOperand <= 10) and (1 <= secondOperand <= 10):
+        match operator:
+            case "+":
+                return str(firstOperand + secondOperand)
+            case "-":
+                return str(firstOperand - secondOperand)
+            case "*":
+                return str(firstOperand * secondOperand)
+            case "/":
+                return str(firstOperand // secondOperand)
+    else:
+        raise Exception("Операнды должны находиться в диапазоне от 1 до 10")
+
+
+print(main("1 + 2"))
+# print(main("1"))
+# print(main("1 + 2 1"))
+# print(main("1 + 2 + 3"))
